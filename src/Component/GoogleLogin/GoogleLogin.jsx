@@ -16,11 +16,20 @@ const GoogleLogin = () => {
   const handelGoogleSignIn = () => {
     googleSignIn()
       .then(result => {
-        const user = result.user
-        navigate(from,{replace:true})
-        toast('Your GoogleLogin SuccessFull !')
-      })
-      .catch(error => console.log(error.message))
+        const loggedInUser = result.user
+        const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(saveUser)
+        })
+            .then(res => res.json())
+            .then(() => {
+                navigate(from, { replace: true });
+            })
+    })
   }
 
 
