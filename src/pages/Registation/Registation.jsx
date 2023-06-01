@@ -54,7 +54,7 @@ const Registation = () => {
     return (
         <>
             <Helmet>
-                <title>Bistro Boss | Sign Up</title>
+                <title>Chines Food | Sign Up</title>
             </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
@@ -91,12 +91,10 @@ const Registation = () => {
                                 </label>
                                 <input type="password"  {...register("password", {
                                     required: true,
-                                    minLength: 6,
-                                    maxLength: 20,
+                                    minLength: 6
                                 })} placeholder="password" className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-                                {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>

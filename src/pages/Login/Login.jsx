@@ -12,36 +12,36 @@ const Login = () => {
 
   const captchaRef = useRef(null)
   const [disable, setDisable] = useState(true)
-  const { singIn } = useContext(AuthContext)
+  const { signIn } = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
 
   useEffect(() => {
-    loadCaptchaEnginge(6);
+    loadCaptchaEnginge(4);
   }, [])
 
   const handelLogin = event => {
-    event.preventDefault()
-    const form = event.target
+    event.preventDefault();
+    const form = event.target;
     const email = form.email.value;
-    const password = form.name.value;
-    singIn(email, password)
-      .then(result => {
-        const user = result.user
-        Swal.fire({
-          title: 'User Login Successful.',
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-        });
-        navigate(from, { replace: true })
-
-      })
-      .catch(error => console.log(error.message))
+    const password = form.password.value;
+    console.log(email, password);
+    signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            Swal.fire({
+                title: 'User Login Successful.',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            });
+            navigate(from, { replace: true });
+        })
   }
 
   const handelValidate = (e) => {

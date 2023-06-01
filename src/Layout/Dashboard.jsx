@@ -4,13 +4,15 @@ import { BsFillCartCheckFill, BsListTask } from "react-icons/bs";
 import {  ImSpoonKnife } from "react-icons/im";
 import { NavLink, Outlet } from 'react-router-dom';
 import UseCart from '../Hooks/UseCart';
+import UseAdmin from '../Hooks/UseAdmin';
 
 const Dashboard = () => {
 
   const [cart] = UseCart()
 
   //TODO : load  data from the server dynamically admin based in data
-  const isAdmin = true;
+  // const isAdmin = true;
+  const [isAdmin] = UseAdmin()
 
   return (
     <div className="drawer drawer-mobile">
