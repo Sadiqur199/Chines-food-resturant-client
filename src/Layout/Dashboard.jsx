@@ -31,7 +31,7 @@ const Dashboard = () => {
             isAdmin ?
               <>
                 <li><NavLink to='/dashboard/home'><FaHome></FaHome>Admin Home</NavLink></li>
-                <li><NavLink to='/dashboard/reservation'> <ImSpoonKnife></ImSpoonKnife>Add Item</NavLink></li>
+                <li><NavLink to='/dashboard/addItem'> <ImSpoonKnife></ImSpoonKnife>Add An Item</NavLink></li>
                 <li><NavLink to='/dashboard/history'><BsListTask></BsListTask>Manage Items</NavLink></li>
                 <li><NavLink to='/dashboard/history'><FaBook></FaBook> Manage Bookings</NavLink></li>
                 <li><NavLink to='/dashboard/allusers'><FaUsers></FaUsers> All Users</NavLink></li>
