@@ -15,7 +15,7 @@ import { FaHandPointDown, FaHandPointUp } from "react-icons/fa";
 const Testimonial = () => {
   const [testimonials, setTestimonials] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/review')
+    fetch('https://food-resturant-server.vercel.app/review')
       .then(res => res.json())
       .then(data => setTestimonials(data))
   }, [])
