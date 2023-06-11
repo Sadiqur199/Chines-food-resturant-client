@@ -33,7 +33,7 @@ const Navbar = () => {
     setFilteredItems(filteredItems);
   };
  
-  console.log(filteredItems)
+ 
 
   const handelLogOut = () => {
     logOut()
@@ -99,7 +99,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
 
-           <form onSubmit={handleSearch}>
+           <form onSubmit={()=>handleSearch(filteredItems)}>
            <div className="form-control ml-2 mr-2">
             <input type="text" placeholder="Search" className="text-black input input-bordered w-20 md:w-auto" />
           </div>

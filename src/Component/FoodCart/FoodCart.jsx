@@ -1,26 +1,30 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import UseCart from '../../Hooks/UseCart';
 
 const FoodCart = ({ item }) => {
-  const { name, image, price, recipe,_id } = item
+  const { name, image, price, recipe, _id } = item
   const { user } = useContext(AuthContext)
-  const [,refetch] = UseCart()
+  const [, refetch] = UseCart()
   const navigate = useNavigate()
   const location = useLocation()
+
+  const handelViewDetails = () =>{
+    console.log('view details')
+  }
 
   const handelAddToCart = item => {
     console.log(item)
     if (user && user.email) {
-      const cartItem = {foodId:_id,name,image,price,email:user.email}
-      fetch('https://food-resturant-server.vercel.app/carts',{
-        method:'POST',
-        headers : {
-          'content-type':'application/json'
+      const cartItem = { foodId: _id, name, image, price, email: user.email }
+      fetch('https://food-resturant-server.vercel.app/carts', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
         },
-        body:JSON.stringify(cartItem)
+        body: JSON.stringify(cartItem)
       })
         .then(res => res.json())
         .then(data => {
@@ -46,7 +50,7 @@ const FoodCart = ({ item }) => {
         confirmButtonText: 'Login Now'
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/login',{state:{from:location}})
+          navigate('/login', { state: { from: location } })
         }
       })
     }
@@ -59,8 +63,13 @@ const FoodCart = ({ item }) => {
       <div className="card-body text-center">
         <h2 className="card-title mx-auto">{name}</h2>
         <p>{recipe}</p>
-        <div className="card-actions justify-center">
-          <button onClick={() => handelAddToCart(item)} className="btn btn-outline bg-slate-100 border-orange-400 border-0 border-b-2 mt-2 mb-4">Add to cart</button>
+        <div className='flex justify-between'>
+          <div className="card-actions ">
+            <Link to={`/menu/${_id}`} onClick={ handelViewDetails} className="btn btn-outline bg-slate-100 border-orange-400 border-0 border-b-2 mt-2 mb-4">View Details</Link>
+          </div>
+          <div className="card-actions">
+            <button onClick={() => handelAddToCart(item)} className="btn btn-outline bg-slate-100 border-orange-400 border-0 border-b-2 mt-2 mb-4">Add to cart</button>
+          </div>
         </div>
       </div>
     </div>

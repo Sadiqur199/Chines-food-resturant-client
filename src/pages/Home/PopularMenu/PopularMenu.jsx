@@ -2,6 +2,7 @@ import React from 'react';
 import SectionTitle from '../../../Component/SectionTitle/SectionTitle';
 import MenuItem from '../../Shared/MenuItem/MenuItem';
 import UseMenu from '../../../Hooks/UseMenu';
+import { Link } from 'react-router-dom';
 
 const PopularMenu = () => {
   const [menu] = UseMenu()
@@ -22,7 +23,7 @@ const PopularMenu = () => {
         }
       </div>
       <div className='text-center'>
-      <button className='btn btn-outline border-0 border-b-2  mt-4'>View More...</button>
+        <Link to='/order'><button className='btn btn-outline border-0 border-b-2  mt-4'>View More...</button></Link>
       </div>
     </section>
   );

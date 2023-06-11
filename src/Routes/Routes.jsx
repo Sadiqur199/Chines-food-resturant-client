@@ -18,6 +18,7 @@ import AdminRoutes from "./AdminRoutes";
 import ManageItem from "../pages/Dasboard/ManageItem/ManageItem";
 import Payment from "../pages/Dasboard/Payment/Payment";
 import img1 from '../assets/icon/404.gif'
+import FoodDetails from "../pages/FoodDetails/FoodDetails";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
       {
         path:'registration',
         element:<Registation></Registation>
+      },
+      {
+        path:'menu/:id',
+        element:<FoodDetails></FoodDetails>,
       }
     ]
   },
