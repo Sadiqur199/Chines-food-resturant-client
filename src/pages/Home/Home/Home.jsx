@@ -5,6 +5,7 @@ import PopularMenu from '../PopularMenu/PopularMenu';
 import Fetured from '../Fetured/Fetured';
 import Testimonial from '../Testimonial/Testimonial';
 import { Helmet } from 'react-helmet-async';
+import CallUs from '../../CallUs/CallUs';
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <Category></Category>
       <PopularMenu></PopularMenu>
       <Fetured></Fetured>
+      <CallUs></CallUs>
       <Testimonial></Testimonial>
     </div>
   );

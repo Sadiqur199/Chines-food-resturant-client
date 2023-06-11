@@ -9,3 +9,7 @@
 .drawer-side a {
   background-color: transparent;
 }
+body.dark {
+  background-color: rgb(10, 10, 10);
+  color: #fff;
+}

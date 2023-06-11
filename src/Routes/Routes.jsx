@@ -1,5 +1,6 @@
 import {
   createBrowserRouter,
+  Link,
   RouterProvider,
 } from "react-router-dom";
 import Main from "../Layout/Main";
@@ -16,8 +17,16 @@ import AddItem from "../pages/Dasboard/AddItem/AddItem";
 import AdminRoutes from "./AdminRoutes";
 import ManageItem from "../pages/Dasboard/ManageItem/ManageItem";
 import Payment from "../pages/Dasboard/Payment/Payment";
+import img1 from '../assets/icon/404.gif'
 
 export const router = createBrowserRouter([
+  {
+    path:'*',
+    element:<div className="w-full">
+       <img className="mx-auto w-full"  src={img1} alt="" />
+       <Link to='/'><button className='absolute  ml-0 mt-[-62%] px-4 py-5 rounded bg-slate-500 text-white'>Back To Home </button></Link>
+    </div>
+   },
   {
     path: "/",
     element: <Main></Main>,

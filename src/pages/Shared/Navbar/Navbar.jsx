@@ -1,18 +1,38 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaUserCircle } from 'react-icons/fa';
 import UseCart from '../../../Hooks/UseCart';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
-  const[cart] = UseCart()
+  const [cart] = UseCart()
+  const [isDarkMode, setIsDarkMode] = useState('light');
+  const [show , setShow] = useState(false)
+
 
   const handelLogOut = () => {
     logOut()
       .then()
       .then(error => console.log(error.message))
+  }
+
+  useEffect(() => {
+    if (isDarkMode == 'dark') {
+      document.body.classList.add('dark')
+    }
+    else {
+      document.body.classList.remove('dark')
+    }
+  }, [isDarkMode])
+
+  const handelDark = () => {
+    setIsDarkMode(isDarkMode == 'dark' ? 'light' : 'dark')
+    // console.log('dark')
   }
 
   const navOption = <>
@@ -30,7 +50,7 @@ const Navbar = () => {
     </li>
     {
       user ? <>
-        <button onClick={handelLogOut} className="btn  btn-ghost">LogOut</button>
+        <button onClick={handelLogOut} className="btn  btn-ghost md:mt-3">LogOut</button>
       </>
         :
         <>
@@ -58,7 +78,24 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          <div className="form-control ml-2 mr-2">
+            <input type="text" placeholder="Search" className="input input-bordered w-20 md:w-auto" />
+          </div>
+          <img className='mt-2 me-2 rounded' style={{ height: "35px", width: '35px' }} title={user?.displayName} src={user?.photoURL ? user.photoURL
+            :
+            <Link href="" className='mt-1'>
+              <FaUserCircle style={{ fontSize: '2rem' }} />
+            </Link>} alt="" />
+
+          <div onClick={handelDark}>
+            <button className=' text-white' onClick={()=>setShow(!show)}>
+            <small>
+              {
+                show ? <span className='px-2' style={{fontSize:'20px'}}><BsToggleOn></BsToggleOn></span> : <span className='px-2' style={{fontSize:'20px'}}> <BsToggleOff></BsToggleOff></span>
+              }
+            </small>
+            </button>
+          </div>
         </div>
       </div>
     </>
