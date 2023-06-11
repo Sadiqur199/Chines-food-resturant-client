@@ -6,6 +6,7 @@ import UseCart from '../../../Hooks/UseCart';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
+import UseMenu from '../../../Hooks/UseMenu';
 
 
 const Navbar = () => {
@@ -14,6 +15,25 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState('light');
   const [show , setShow] = useState(false)
 
+  // const [menu , setMenu] = useState([])
+  // useEffect(()=>{
+  //   fetch('https://food-resturant-server.vercel.app/menu')
+
+  // },[])
+
+  const [menu] = UseMenu()
+
+  //search button handel
+  const [filteredItems, setFilteredItems] = useState(menu);
+
+  const handleSearch = (searchTerm) => {
+    const filteredItems = menuItems.filter((item) =>
+      item.toLowerCase().includes(searchTerm)
+    );
+    setFilteredItems(filteredItems);
+  };
+ 
+  console.log(filteredItems)
 
   const handelLogOut = () => {
     logOut()
@@ -78,9 +98,13 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <div className="form-control ml-2 mr-2">
-            <input type="text" placeholder="Search" className="input input-bordered w-20 md:w-auto" />
+
+           <form onSubmit={handleSearch}>
+           <div className="form-control ml-2 mr-2">
+            <input type="text" placeholder="Search" className="text-black input input-bordered w-20 md:w-auto" />
           </div>
+           </form>
+
           <img className='mt-2 me-2 rounded' style={{ height: "35px", width: '35px' }} title={user?.displayName} src={user?.photoURL ? user.photoURL
             :
             <Link href="" className='mt-1'>
