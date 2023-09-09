@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 import UseMenu from '../../../Hooks/UseMenu';
+import UseAdmin from '../../../Hooks/UseAdmin';
 
 
 const Navbar = () => {
@@ -14,6 +15,7 @@ const Navbar = () => {
   const [cart] = UseCart()
   const [isDarkMode, setIsDarkMode] = useState('light');
   const [show , setShow] = useState(false)
+  const [isAdmin] = UseAdmin()
 
   // const [menu , setMenu] = useState([])
   // useEffect(()=>{
@@ -60,6 +62,7 @@ const Navbar = () => {
     <li><Link to="/menu">Our Menu</Link></li>
     <li><Link to="/order">Order Food</Link></li>
     <li><Link to="">Contact</Link></li>
+    <li><Link to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome' }>Dashboard</Link></li>
     <li>
       <Link to="/dashboard/mycart">
         <button className="btn gap-2">

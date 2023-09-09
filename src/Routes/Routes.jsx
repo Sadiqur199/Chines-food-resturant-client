@@ -19,6 +19,8 @@ import ManageItem from "../pages/Dasboard/ManageItem/ManageItem";
 import Payment from "../pages/Dasboard/Payment/Payment";
 import img1 from '../assets/icon/404.gif'
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
+import UserHome from "../pages/Dasboard/UserHome/UserHome";
+import AdminHome from "../pages/Dasboard/AdminHome/AdminHome";
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +66,10 @@ export const router = createBrowserRouter([
     element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
       {
+         path:'userhome',
+         element:<UserHome></UserHome>
+      },
+      {
         path:'mycart',
         element:<MyCart></MyCart>
       },
@@ -72,6 +78,11 @@ export const router = createBrowserRouter([
         element:<Payment></Payment>
       },
       //admin routes
+      {
+        path:'adminhome',
+        element:<AdminRoutes><AdminHome></AdminHome></AdminRoutes>
+
+      },
       {
         path:'allusers',
         element:<AdminRoutes><AllUsers></AllUsers></AdminRoutes>
