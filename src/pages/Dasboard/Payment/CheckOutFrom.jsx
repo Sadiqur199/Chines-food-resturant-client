@@ -92,7 +92,7 @@ const CheckOutFrom = ({cart, price }) => {
         date: new Date(),
         quantity: cart.length,
         cartItems: cart.map(item => item._id),
-        menuItems: cart.map(item => item.menuItemId),
+        menuItems: cart.map(item => item._id),
         status: 'service pending',
         itemNames: cart.map(item => item.name)
       }
