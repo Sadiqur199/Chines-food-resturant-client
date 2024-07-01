@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         element:<Registation></Registation>
       },
       {
-        path:'menu/:id',
+        path:'/menu/:id',
         element:<FoodDetails></FoodDetails>,
       }
     ]

@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 const FoodDetails = () => {
   return (
-    <div className=''>
+    <div className='py-[100px]'>
     </div>
   );
 };

@@ -12,7 +12,23 @@ const FoodCart = ({ item }) => {
   const location = useLocation()
 
   const handelViewDetails = () =>{
-    console.log('view details')
+    Swal.fire({
+      title:recipe ,
+      showClass: {
+        popup: `
+          animate__animated
+          animate__fadeInUp
+          animate__faster
+        `
+      },
+      hideClass: {
+        popup: `
+          animate__animated
+          animate__fadeOutDown
+          animate__faster
+        `
+      }
+    });
   }
 
   const handelAddToCart = item => {
@@ -65,7 +81,8 @@ const FoodCart = ({ item }) => {
         <p>{recipe}</p>
         <div className='flex justify-between'>
           <div className="card-actions ">
-            <Link to={`/menu/${_id}`} onClick={ handelViewDetails} className="btn btn-outline bg-slate-100 border-orange-400 border-0 border-b-2 mt-2 mb-4">View Details</Link>
+            {/* <Link to={`/menu/${_id}`} onClick={ handelViewDetails} className="btn btn-outline bg-slate-100 border-orange-400 border-0 border-b-2 mt-2 mb-4">View Details</Link> */}
+            <Link to='' onClick={ handelViewDetails} className="btn btn-outline bg-slate-100 border-orange-400 border-0 border-b-2 mt-2 mb-4">View Details</Link>
           </div>
           <div className="card-actions">
             <button onClick={() => handelAddToCart(item)} className="btn btn-outline bg-slate-100 border-orange-400 border-0 border-b-2 mt-2 mb-4">Add to cart</button>

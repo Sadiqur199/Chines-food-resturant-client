@@ -24,7 +24,7 @@ const Order = () => {
   const drinks = menu.filter(item=> item.category === 'drinks')
 
   return (
-    <div>
+    <div className='px-5'>
       <Helmet>
         <title>Chines Food Restaurant | Order</title>
       </Helmet>
